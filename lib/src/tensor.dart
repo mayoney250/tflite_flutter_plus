@@ -34,10 +34,10 @@ class Tensor {
       tfLiteTensorNumDims(_tensor), (i) => tfLiteTensorDim(_tensor, i));
 
   /// Underlying data buffer as bytes.
+  /// Underlying data buffer as bytes.
   Uint8List get data {
     final data = cast<Uint8>(tfLiteTensorData(_tensor));
-    return UnmodifiableUint8ListView(
-        data.asTypedList(tfLiteTensorByteSize(_tensor)));
+    return Uint8List.fromList(data.asTypedList(tfLiteTensorByteSize(_tensor)));
   }
 
   /// Quantization Params associated with the model, [only Android]
